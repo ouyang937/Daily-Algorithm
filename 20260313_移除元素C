@@ -1,0 +1,64 @@
+//链接：https://leetcode.cn/problems/remove-element/submissions/
+
+//========================
+//思路1：暴力移位法
+//时间复杂度：O(n²)
+//空间复杂度：O(1)
+//========================
+int removeElement(int* nums, int numsSize, int val) {
+    for(int i=0;i<numsSize;) {
+        if(nums[i]==val){
+            for(int j=i;j<numsSize-1;j++)
+                nums[j] = nums[j+1];
+            numsSize--;
+        }
+        else
+            i++;
+    }
+    return numsSize;
+}
+
+
+//========================
+//思路2：双指针
+//时间复杂度：O(n)
+//空间复杂度：O(1)
+//========================
+int removeElement(int* nums, int numsSize, int val) {
+    int left = 0;
+    for(int right = 0;right < numsSize;right++){
+        if(nums[right] != val){
+            nums[left] = nums[right];
+            left++;
+        }
+    }
+    return left;
+}
+
+
+//========================
+//思路3：双指针优化
+//时间复杂度：O(n)
+//空间复杂度：O(1)
+//========================
+int removeElement(int* nums, int numsSize, int val) {
+    int left = 0, right = numsSize;
+    while (left < right) {
+        if (nums[left] == val) {
+            nums[left] = nums[right - 1];
+            right--;
+        } else {
+            left++;
+        }
+    }
+    return left;
+}
+
+
+//总结：我一开始是使用暴力移动法来写的，易于理解，但是时间复杂度高，遇到大量 val 时效率较低，
+//     后来参考了解析，使用双指针写，时间复杂度得到优化。
+//     以后遇到“原地修改数组”类问题，优先想到双指针。
+
+
+
+
