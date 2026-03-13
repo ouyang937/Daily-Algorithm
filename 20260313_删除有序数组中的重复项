@@ -1,0 +1,17 @@
+//链接：https://leetcode.cn/problems/remove-duplicates-from-sorted-array/
+
+//=======================
+//思路：双指针
+//时间复杂度：O(n)
+//空间复杂度：O(1)
+//=======================
+int removeDuplicates(int* nums, int numsSize) {
+    int left = 0;
+    for(int right = 1;right < numsSize;right++){
+        if(nums[right] != nums[left]){
+            left++;
+            nums[left] = nums[right];
+        }
+    }
+    return left+1;
+}
