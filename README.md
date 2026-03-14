@@ -5,7 +5,7 @@ Record daily LeetCode practice, analysis and reflection.
 This repository serves as a record of my daily LeetCode practice. It includes C implementations, problem-solving ideas, time/space complexity analysis, and reflections. The goal is to solidify my algorithmic foundation and improve my coding skills.
 
 ## 📂 Problem List
-|   Date     |                     Title       |    Difficulty     |        Tag       
+|   Date     |               Title             |    Difficulty     |        Tag       
 |------------|-----------------------------------------------------|--------------------------|
 | 2026-03-13 | 移除元素                         |      简单         | 双指针（暴力+优化） 数组
 | 2026-03-13 | 最后一个单词的长度                |      简单         | 逆向遍历 字符串
