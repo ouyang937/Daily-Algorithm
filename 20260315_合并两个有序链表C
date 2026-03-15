@@ -1,0 +1,71 @@
+//链接：https://leetcode.cn/problems/merge-two-sorted-lists/
+
+//=============================
+//思路1：迭代法，当 l1 和 l2 都不是空链表时，判断 l1 和 l2 哪一个链表的头节点的值更小，
+//      将较小值的节点添加到结果里，当一个节点被添加到结果里之后，将对应链表中的节点向后移一位。
+//时间复杂度：O(m+n),m、n分别为两个链表的长度。
+//空间复杂度：O(1)。只需要常数的空间存放若干变量。
+//=============================
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2) {
+    struct ListNode h;            //虚拟头结点
+    struct ListNode* p = &h;      //p指向结果链表的当前尾节点
+    h.next = NULL;
+    while (list1 && list2) {      //list1和list2都非空时才进行比较
+        if (list1->val <= list2->val) {
+            p->next = list1;
+            list1 = list1->next;
+        } else {
+            p->next = list2;
+            list2 = list2->next;
+        }
+        p = p->next;
+    }
+    if (list1)                    //对剩余部分进行处理，同时也包括list1或list2为空的情况
+        p->next = list1;
+    else
+        p->next = list2;
+    return h.next;
+}
+
+
+//=============================
+//思路1：递归
+//时间复杂度：O(m+n),m、n分别为两个链表的长度。
+//空间复杂度：O(m+n),m、n分别为两个链表的长度,递归调用 mergeTowLists 函数时需要消耗栈空间，
+             栈空间的大小取决于递归调用的深度。结束递归调用时 mergeTowLists 函数最多调用 n+m 
+             次，因此空间复杂度为O(m+n)。     
+//=============================
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2) {
+    //基线条件：如果其中一个为空就直接返回另一个
+    if (list1 == NULL)
+        return list2;
+    else if (list2 == NULL)
+        return list1;
+    //递归步骤：比较头结点
+    else if (list1->val < list2->val) {
+        list1->next = mergeTwoLists(list1->next, list2);  //递归合并剩余部分
+        return list1;                                     //list1作为合并后的头结点
+    } else {
+        list2->next = mergeTwoLists(list1, list2->next);
+        return list2;
+    }
+}
+
+
+//总结：递归算法的代码更简洁、直观，但是如果递归深度很深时，可能导致栈溢出。不过刚开始没有想到这种
+        方法，还需要多练习，熟悉这种思维方式。
+
