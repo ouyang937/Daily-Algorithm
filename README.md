@@ -11,6 +11,7 @@ This repository serves as a record of my daily LeetCode practice. It includes C 
 | 2026-03-13 | 最后一个单词的长度                |      简单         | 逆向遍历 字符串
 | 2026-03-13 | 删除有序数组中的重复项            |      简单         | 双指针 数组
 | 2026-03-14 | 两数相加                         |      中等         | 模拟 链表 数学
+| 2026-03-15 | 合并两个有序链表                  |      简单         | 递归 迭代 链表
 
 🎯 Goals
 Keep practicing one problem per day, and gradually cover core algorithms: array, string, linked list, hash table, two pointers, greedy algorithm, etc.
