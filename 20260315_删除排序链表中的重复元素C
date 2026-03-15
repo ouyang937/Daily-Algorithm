@@ -1,0 +1,28 @@
+//🔗链接： https://leetcode.cn/problems/remove-duplicates-from-sorted-list/
+
+//=========================
+// 思路：一次遍历，设 cur 指向头结点，每次比较 cur->next->val 与 cur->val 如果相同就将
+//       cur->next 从链表中删除
+//注意：当遍历到最后一个元时， cur->next 为空节点，如果不加以判断，访问 cur->next 对应
+//      元素会产生运行错误。
+//时间复杂度：O(n)
+//空间复杂度：O(1)
+//=========================
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode* deleteDuplicates(struct ListNode* head) {
+    struct ListNode* cur = head;
+    while (cur && cur->next) {
+        if (cur->next->val == cur->val) {
+            struct ListNode* t = cur->next;
+            cur->next = t->next;
+        } else
+            cur = cur->next;
+    }
+    return head;
+}
