@@ -14,6 +14,7 @@ This repository serves as a record of my daily LeetCode practice. It includes C 
 | 2026-03-15 | 合并两个有序链表                  |      简单         | 递归 迭代 链表
 | 2026-03-15 | 删除链表的倒数第N个节点            |      中等        |  双指针 栈 链表
 | 2026-03-15 | 删除排序链表中的重复元素           |      简单        |  链表
+| 2026-03-16 | 位1的个数                        |      简单        |  位运算 分治
 
 🎯 Goals
 Keep practicing one problem per day, and gradually cover core algorithms: array, string, linked list, hash table, two pointers, greedy algorithm, etc.
