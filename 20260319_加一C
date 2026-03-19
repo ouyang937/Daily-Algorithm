@@ -1,0 +1,41 @@
+//链接：https://leetcode.cn/problems/plus-one/description/
+
+//==========================
+//思路：先遍历数组，记录该数末尾9的个数count，后根据9的个数，来进行操作。
+//      全为9，需要增加一位，赋值为1，其余为0;没有9，最后一位加一；否则digits[digitsSize - count - 1]加一，
+//      并且将其后的值赋值为0.
+//时间复杂度：O(m),m为末尾9的个数
+//空间复杂度：O(1)
+//==========================
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* plusOne(int* digits, int digitsSize, int* returnSize) {
+    int count = 0;
+    for (int i = digitsSize - 1; i >= 0; i--) {
+        if (digits[i] == 9)
+            count++;
+        else
+            break;
+    }
+    if (count == 0) {
+        digits[digitsSize - 1] += 1;
+        *returnSize = digitsSize;
+        return digits;
+    } else if (count < digitsSize ) {
+        digits[digitsSize - count - 1] += 1;
+        for (int i = digitsSize - count; i < digitsSize; i++) {
+            digits[i] = 0;
+        }
+        *returnSize = digitsSize;
+        return digits;
+    } else {
+        int* new = malloc((1 + digitsSize) * sizeof(int));
+        new[0] = 1;
+        for (int i = 1; i < digitsSize + 1; i++) {
+            new[i] = 0;
+        }
+        *returnSize = digitsSize + 1;
+        return new;
+    }
+}
